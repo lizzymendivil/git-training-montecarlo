@@ -11,12 +11,12 @@ namespace MontecarloAlgorithms
         /// <summary>
         /// The X coordinate.
         /// </summary>
-        public float X;
+        public double X;
 
         /// <summary>
         /// The Y coordinate.
         /// </summary>
-        public float Y;
+        public double Y;
 
         /// <summary>
         /// The InsideCircle coordinate.

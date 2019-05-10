@@ -12,6 +12,9 @@ namespace MontecarloAlgorithms
     /// </summary>
     public class MonteCarloPI
     {
+        /// <summary>
+        /// Internal declaration of points dictionary
+        /// </summary>
         private List<MPoint> points;
         private Random rnd;
         public List<MPoint> Points { get { return points; } }
@@ -35,9 +38,9 @@ namespace MontecarloAlgorithms
         }
 
         /// <summary>
-        /// Method to generate PI.
+        /// Returns PI value
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The PI approximation</returns>
         public float GetPI()
         {
             int circleCounter = this.points.Count(x=>x.InsideCircle);
@@ -52,18 +55,21 @@ namespace MontecarloAlgorithms
         /// <returns>An instance of MPoint.</returns>
         private MPoint GenerateRandomPoint()
         {
-            float x = GenerateRandomCoordinate();
-            float y = GenerateRandomCoordinate();
+            float x = GenerateRandomValue();
+            float y = GenerateRandomValue();
 
-            MPoint newOne = new MPoint(x, y, false);
+            double ratio = Math.Sqrt(x * x + y * y);
+            bool insideCircle = ratio <= 0.5;
+
+            MPoint newOne = new MPoint(x, y, insideCircle);
             return newOne;
         }
 
         /// <summary>
-        /// Generates the random coordinates.
+        /// Generates a random value
         /// </summary>
-        /// <returns>The random value.</returns>
-        private float GenerateRandomCoordinate()
+        /// <returns>The random value</returns>
+        private float GenerateRandomValue()
         {
             return (float)rnd.NextDouble() - 0.5f;
         }
